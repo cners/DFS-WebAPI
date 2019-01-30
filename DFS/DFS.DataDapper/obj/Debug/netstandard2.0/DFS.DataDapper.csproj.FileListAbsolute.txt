@@ -1,0 +1,14 @@
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\DFS.DataDapper.deps.json
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\DFS.DataDapper.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\DFS.DataDapper.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\DFS.Domain.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\DFS.Domain.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.csprojAssemblyReference.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.csproj.CoreCompileInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.AssemblyInfoInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.AssemblyInfo.cs
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.csproj.CopyComplete
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml

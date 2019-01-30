@@ -6,29 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DFS.Controllers
 {
-    [ApiVersion("1.0")]
-    [ApiVersion("2.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    //[ApiVersion("1.0")]
+    //[ApiVersion("2.0")]
+    [Route("api/[controller]")]
+    //[Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
         // GET api/values
-        [HttpGet, MapToApiVersion("1.1")]
+        [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        [HttpGet, MapToApiVersion("1.0")]
-        public ActionResult<IEnumerable<string>> Get2()
-        {
-            return new string[] { "va234234321", "value2" };
-        }
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get3()
-        {
-            return new string[] { "defaut", "value2" };
-        }
 
         // GET api/values/5
         [HttpGet("{id}")]
