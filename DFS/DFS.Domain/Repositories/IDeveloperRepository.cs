@@ -7,16 +7,8 @@ using System.Threading.Tasks;
 
 namespace DFS.Domain.Repositories
 {
-   public interface IDeveloperRepository:IDisposable
+    public interface IDeveloperRepository :  IBaseRepository<Developer>
     {
-        Task<List<Developer>> GetAllAsync(CancellationToken ct = default(CancellationToken));
 
-        Task<Developer> GetByIdAsync(CancellationToken ct = default(CancellationToken));
-
-        Task<Developer> AddAsync(Developer newDeveloper, CancellationToken ct = default(CancellationToken));
-
-        Task<bool> UpdateAsync(Developer developer, CancellationToken ct = default(CancellationToken));
-
-        Task<bool> DeleteAsync(string devID, CancellationToken ct = default(CancellationToken));
     }
 }

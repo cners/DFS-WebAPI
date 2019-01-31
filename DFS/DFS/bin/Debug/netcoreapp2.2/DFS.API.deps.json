@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "0c4ca1f77e244260ef1ea38a1fbcbacf99745ff6"
+    "signature": "82dcb50be33cd291f2d9d125ed2df5b298cbc115"
   },
   "compilationOptions": {
     "defines": [
@@ -24,13 +24,12 @@
     ".NETCoreApp,Version=v2.2": {
       "DFS.API/1.0.0": {
         "dependencies": {
-          "DFS.DataDapper": "1.0.0",
           "DFS.DataEFCore": "1.0.0",
+          "DFS.DataEFCoreMySQL": "1.0.0",
           "DFS.Domain": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Versioning": "3.1.2",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
-          "Microsoft.EntityFrameworkCore.Relational": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0",
           "Swashbuckle.AspNetCore": "5.0.0-beta"
@@ -40,22 +39,6 @@
         },
         "compile": {
           "DFS.API.dll": {}
-        }
-      },
-      "Dapper/1.50.5": {
-        "dependencies": {
-          "System.Data.SqlClient": "4.6.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Dapper.dll": {
-            "assemblyVersion": "1.50.5.0",
-            "fileVersion": "1.50.5.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Dapper.dll": {}
         }
       },
       "Google.Protobuf/3.5.1": {
@@ -435,6 +418,21 @@
           "lib/netcoreapp2.0/MySql.Data.dll": {}
         }
       },
+      "MySql.Data.EntityFrameworkCore/8.0.14": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.0",
+          "MySql.Data": "8.0.14"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MySql.Data.EntityFrameworkCore.dll": {
+            "assemblyVersion": "8.0.14.0",
+            "fileVersion": "8.0.14.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MySql.Data.EntityFrameworkCore.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0"
@@ -672,7 +670,6 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Reflection.TypeExtensions/4.4.0": {},
       "System.Security.Cryptography.ProtectedData/4.4.0": {
         "runtime": {
           "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -689,19 +686,6 @@
           }
         }
       },
-      "DFS.DataDapper/1.0.0": {
-        "dependencies": {
-          "DFS.Domain": "1.0.0",
-          "Dapper": "1.50.5",
-          "MySql.Data": "8.0.14"
-        },
-        "runtime": {
-          "DFS.DataDapper.dll": {}
-        },
-        "compile": {
-          "DFS.DataDapper.dll": {}
-        }
-      },
       "DFS.DataEFCore/1.0.0": {
         "dependencies": {
           "DFS.Domain": "1.0.0",
@@ -714,12 +698,35 @@
           "DFS.DataEFCore.dll": {}
         }
       },
+      "DFS.DataEFCoreMySQL/1.0.0": {
+        "dependencies": {
+          "DFS.Domain": "1.0.0",
+          "MySql.Data.EntityFrameworkCore": "8.0.14"
+        },
+        "runtime": {
+          "DFS.DataEFCoreMySQL.dll": {}
+        },
+        "compile": {
+          "DFS.DataEFCoreMySQL.dll": {}
+        }
+      },
       "DFS.Domain/1.0.0": {
+        "dependencies": {
+          "FastDFS": "1.1.0.0"
+        },
         "runtime": {
           "DFS.Domain.dll": {}
         },
         "compile": {
           "DFS.Domain.dll": {}
+        }
+      },
+      "FastDFS.Reference/1.1.0.0": {
+        "runtime": {
+          "FastDFS.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -2048,7 +2055,7 @@
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
@@ -2966,7 +2973,7 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -3098,7 +3105,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -3194,7 +3201,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -3264,6 +3271,13 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0",
           "Microsoft.NETCore.Targets": "2.0.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compileOnly": true
+      },
+      "System.Reflection.TypeExtensions/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0"
         },
         "compileOnly": true
@@ -3692,7 +3706,7 @@
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -3738,13 +3752,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Dapper/1.50.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1vPpX7WQmQCIb7rwlGOUoVs/yWZhVKvdhuG7WrJV+V+qsP8btnrrCqVWHENAlJxBAnUw5rhWfmuba9/Egei9MA==",
-      "path": "dapper/1.50.5",
-      "hashPath": "dapper.1.50.5.nupkg.sha512"
     },
     "Google.Protobuf/3.5.1": {
       "type": "package",
@@ -3886,6 +3893,13 @@
       "path": "mysql.data/8.0.14",
       "hashPath": "mysql.data.8.0.14.nupkg.sha512"
     },
+    "MySql.Data.EntityFrameworkCore/8.0.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wn3QCGOYVIeKH8Xa+0Tax7o2HsaYzvPMzLc8OnzpkBeQLTpB15jlAPDEFoB1L5qct8IuuffHAzikPQ8niZWFDg==",
+      "path": "mysql.data.entityframeworkcore/8.0.14",
+      "hashPath": "mysql.data.entityframeworkcore.8.0.14.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -3984,13 +3998,6 @@
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.TypeExtensions/4.4.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
-      "path": "system.reflection.typeextensions/4.4.0",
-      "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
-    },
     "System.Security.Cryptography.ProtectedData/4.4.0": {
       "type": "package",
       "serviceable": true,
@@ -3998,18 +4005,23 @@
       "path": "system.security.cryptography.protecteddata/4.4.0",
       "hashPath": "system.security.cryptography.protecteddata.4.4.0.nupkg.sha512"
     },
-    "DFS.DataDapper/1.0.0": {
+    "DFS.DataEFCore/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "DFS.DataEFCore/1.0.0": {
+    "DFS.DataEFCoreMySQL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "DFS.Domain/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FastDFS.Reference/1.1.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
@@ -5643,6 +5655,13 @@
       "sha512": "sha512-5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.TypeExtensions/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+      "path": "system.reflection.typeextensions/4.3.0",
+      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",

@@ -296,10 +296,19 @@
       },
       "DFS.Domain/1.0.0": {
         "dependencies": {
+          "FastDFS": "1.1.0.0",
           "System.ComponentModel.Annotations": "4.2.0.0"
         },
         "runtime": {
           "DFS.Domain.dll": {}
+        }
+      },
+      "FastDFS.Reference/1.1.0.0": {
+        "runtime": {
+          "FastDFS.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
         }
       },
       "System.ComponentModel.Annotations.Reference/4.2.0.0": {
@@ -551,6 +560,11 @@
     },
     "DFS.Domain/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FastDFS.Reference/1.1.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

@@ -17,7 +17,8 @@ namespace DFS.Domain.Supervisor
             var developer = new Developer
             {
                 DevID = Guid.NewGuid().ToString("N"),
-                Email = "liuzhuang@6iuu.com"
+                Email = newDevloperViewModel.Email,
+                Tel=newDevloperViewModel.Tel
             };
 
             developer = await _developerRepository.AddAsync(developer, ct);

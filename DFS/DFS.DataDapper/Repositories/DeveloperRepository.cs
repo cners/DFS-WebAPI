@@ -6,9 +6,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,26 +15,32 @@ namespace DFS.DataDapper.Repositories
     public class DeveloperRepository : IDeveloperRepository
     {
         private DbInfo _dbInfo;
+        private static object _dbLock = new object();
+
         public DeveloperRepository(DbInfo dbInfo)
         {
             _dbInfo = dbInfo;
         }
 
-        public IDbConnection Connection => new SqlConnection(_dbInfo.ConnectionStrings);
+        //public IDbConnection Connection => new SqlConnection(_dbInfo.ConnectionStrings);
+        public IDbConnection Connection => new MySqlConnection(_dbInfo.ConnectionStrings);
 
         public async Task<Developer> AddAsync(Developer newDeveloper, CancellationToken ct = default)
         {
-            using (IDbConnection cn = Connection)
+            lock (_dbLock)
+            {
+                using (IDbConnection cn = Connection)
             {
                 var parameters = new
                 {
                     newDeveloper.DevID,
                     newDeveloper.Email
                 };
-
                 cn.Open();
-                newDeveloper.DevID = cn.Query<string>(
-                    "INSERT INTO dfs_developer(devid,email) VALUES (%DevID,%Email)", parameters).FirstOrDefault();
+               
+                    newDeveloper.DevID = cn.Query<string>(
+                        "INSERT INTO dfs_developer(devid,email) VALUES (?DevID,?Email)", parameters).FirstOrDefault();
+                }
             }
             return newDeveloper;
         }

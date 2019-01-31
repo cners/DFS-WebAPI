@@ -1,4 +1,5 @@
-﻿using DFS.DataEFCore.Repositories;
+﻿
+using DFS.DataEFCoreMySQL.Repositories;
 using DFS.Domain.Repositories;
 using DFS.Domain.Supervisor;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -8,12 +9,7 @@ namespace DFS.API.Configurations
 {
     public static class ServicesConfiguration
     {
-        public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
-        {
-            services.AddScoped<IDeveloperRepository, DeveloperRepository>();
 
-            return services;
-        }
 
         public static IServiceCollection ConfigureSupervisor(this IServiceCollection services)
         {
@@ -42,5 +38,14 @@ namespace DFS.API.Configurations
                     .AllowCredentials()
                     .Build());
             });
+
+        public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IDeveloperRepository, DeveloperRepository>();
+            services.AddScoped<IFileRepository, FileRepository>();
+            //services.AddScoped<IDeveloperRepository, DFS.DataEFCore.Repositories.DeveloperRepository>();
+
+            return services;
+        }
     }
 }

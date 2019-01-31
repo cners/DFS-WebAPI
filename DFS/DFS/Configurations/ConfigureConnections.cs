@@ -1,13 +1,9 @@
-﻿using DFS.DataEFCore;
+﻿using DFS.DataEFCoreMySQL;
 using DFS.Domain.DbInfo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace DFS.API.Configurations
 {
@@ -23,13 +19,14 @@ namespace DFS.API.Configurations
                 connection = configuration.GetConnectionString("DfsDbWindows") ??
                     "Server=.;Database=DFS;Trusted_Connection=True;";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)||RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 connection = configuration.GetConnectionString("DfsDbDocker") ??
                     "Server=localhost,1433;Database=DFS;User=sa;Password=sa;Trusted_Connection=False;";
             }
 
-            services.AddDbContextPool<DfsContext>(options => options.UseSqlServer(connection));
+            // 使用MySQL数据库，如需SQLserver数据请切换UseSqlServer(connection)
+            services.AddDbContextPool<DfsContext>(options => options.UseMySQL(connection));
 
             services.AddSingleton<IDbInfo>(new DbInfo(connection));
 

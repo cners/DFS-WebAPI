@@ -20,7 +20,9 @@ namespace DFS.DataEFCore.Repositories
 
         public async Task<Developer> AddAsync(Developer newDeveloper, CancellationToken ct = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            _context.dfs_developer.Add(newDeveloper);
+            await _context.SaveChangesAsync(ct);
+            return newDeveloper;
         }
 
         public Task<bool> DeleteAsync(string devID, CancellationToken ct = default(CancellationToken))

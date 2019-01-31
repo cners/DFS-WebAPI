@@ -29,7 +29,7 @@ namespace DFS.API.Controllers
             try
             {
                 if (input == null)
-                    return BadRequest();
+                    return new BadRequestObjectResult("无效参数");
 
                 return StatusCode(201, await _dfsSupervisor.AddDeveloperAsync(input, ct));
             }

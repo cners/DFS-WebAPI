@@ -12,3 +12,5 @@ D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-We
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\obj\Debug\netstandard2.0\DFS.DataDapper.pdb
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataDapper\bin\Debug\netstandard2.0\FastDFS.pdb

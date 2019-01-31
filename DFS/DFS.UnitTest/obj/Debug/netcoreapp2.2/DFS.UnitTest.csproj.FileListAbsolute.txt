@@ -17,3 +17,5 @@ D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-We
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.UnitTest\obj\Debug\netcoreapp2.2\DFS.UnitTest.pdb
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.UnitTest\bin\Debug\netcoreapp2.2\DFS.DataDapper.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.UnitTest\bin\Debug\netcoreapp2.2\DFS.DataDapper.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.UnitTest\bin\Debug\netcoreapp2.2\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.UnitTest\bin\Debug\netcoreapp2.2\FastDFS.pdb

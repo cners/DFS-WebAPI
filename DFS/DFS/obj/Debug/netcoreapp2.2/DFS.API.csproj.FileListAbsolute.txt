@@ -3,10 +3,10 @@ D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-We
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.API.runtimeconfig.dev.json
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.API.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.API.pdb
-D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.DataDapper.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.DataEFCore.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.DataEFCoreMySQL.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.Domain.dll
-D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.DataDapper.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.DataEFCoreMySQL.pdb
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.DataEFCore.pdb
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\DFS.Domain.pdb
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Debug\netcoreapp2.2\DFS.API.csprojAssemblyReference.cache
@@ -19,3 +19,5 @@ D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-We
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Debug\netcoreapp2.2\DFS.API.csproj.CopyComplete
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Debug\netcoreapp2.2\DFS.API.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Debug\netcoreapp2.2\DFS.API.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Debug\netcoreapp2.2\FastDFS.pdb
