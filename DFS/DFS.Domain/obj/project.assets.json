@@ -25,6 +25,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "FastDFSNetCore/1.1.5": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/FastDFSNetCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FastDFSNetCore.dll": {}
+        }
       }
     }
   },
@@ -170,10 +180,16 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "FastDFSNetCore/1.1.5": {
+      "type": "project",
+      "path": "../FastDFS/FastDFS.csproj",
+      "msbuildProject": "../FastDFS/FastDFS.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "FastDFSNetCore >= 1.1.5",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -206,7 +222,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\01、工作协作\\14、内网协同\\04.源代码\\分布式文件系统\\DFS-WebAPI\\DFS\\FastDFS\\FastDFS.csproj": {
+              "projectPath": "D:\\01、工作协作\\14、内网协同\\04.源代码\\分布式文件系统\\DFS-WebAPI\\DFS\\FastDFS\\FastDFS.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,0 +1,14 @@
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\DFS.DataEFCoreMySQL.deps.json
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\DFS.DataEFCoreMySQL.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\DFS.DataEFCoreMySQL.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\DFS.Domain.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\DFS.Domain.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\bin\Release\netstandard2.0\FastDFS.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.csprojAssemblyReference.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.csproj.CoreCompileInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.AssemblyInfoInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.AssemblyInfo.cs
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.csproj.CopyComplete
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.DataEFCoreMySQL\obj\Release\netstandard2.0\DFS.DataEFCoreMySQL.pdb

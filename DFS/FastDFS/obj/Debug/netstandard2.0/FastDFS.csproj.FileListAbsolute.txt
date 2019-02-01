@@ -1,0 +1,13 @@
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\bin\Debug\netstandard2.0\FastDFS.deps.json
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\bin\Debug\netstandard2.0\FastDFS.dll
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\bin\Debug\netstandard2.0\FastDFS.pdb
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\obj\Debug\netstandard2.0\FastDFS.csprojAssemblyReference.cache
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\obj\Debug\netstandard2.0\FastDFS.csproj.CoreCompileInputs.cache
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\obj\Debug\netstandard2.0\FastDFS.dll
+D:\02、程序测试\FastDFSNetCore-master\src\FastDFS\obj\Debug\netstandard2.0\FastDFS.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Debug\netstandard2.0\FastDFS.deps.json
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Debug\netstandard2.0\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Debug\netstandard2.0\FastDFS.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Debug\netstandard2.0\FastDFS.csproj.CoreCompileInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Debug\netstandard2.0\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Debug\netstandard2.0\FastDFS.pdb

@@ -1898,11 +1898,24 @@
       "DFS.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "FastDFSNetCore": "1.1.5"
+        },
         "compile": {
           "bin/placeholder/DFS.Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/DFS.Domain.dll": {}
+        }
+      },
+      "FastDFSNetCore/1.1.5": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/FastDFSNetCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FastDFSNetCore.dll": {}
         }
       }
     }
@@ -6591,6 +6604,11 @@
       "type": "project",
       "path": "../DFS.Domain/DFS.Domain.csproj",
       "msbuildProject": "../DFS.Domain/DFS.Domain.csproj"
+    },
+    "FastDFSNetCore/1.1.5": {
+      "type": "project",
+      "path": "../FastDFS/FastDFS.csproj",
+      "msbuildProject": "../FastDFS/FastDFS.csproj"
     }
   },
   "projectFileDependencyGroups": {

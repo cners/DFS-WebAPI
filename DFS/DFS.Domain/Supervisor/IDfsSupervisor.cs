@@ -21,7 +21,7 @@ namespace DFS.Domain.Supervisor
 
         Task<DfsFileViewModel> AddDfsFileAsync(DfsFileViewModel newDfsFileViewModel,
             CancellationToken ct = default(CancellationToken));
-        Task<string> Upload(DfsFileUploadViewModel uploadViewModel,
+        Task<DfsFileDownloadViewModel> Upload(DfsFileUploadViewModel uploadViewModel,
            CancellationToken ct = default);
 
     }

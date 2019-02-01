@@ -1,0 +1,14 @@
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\DFS.Domain.deps.json
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\DFS.Domain.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\DFS.Domain.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\System.ComponentModel.Annotations.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\FastDFS.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\bin\Release\netstandard2.0\System.ComponentModel.Annotations.xml
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.csprojAssemblyReference.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.csproj.CoreCompileInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.AssemblyInfoInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.AssemblyInfo.cs
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.csproj.CopyComplete
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Release\netstandard2.0\DFS.Domain.pdb

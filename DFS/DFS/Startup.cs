@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DFS.API.Configurations;
+using DFS.API.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace DFS
 {
@@ -63,13 +66,33 @@ namespace DFS
                 .AddConnectionProvider(Configuration)
                 .AddAppSettings(Configuration);
 
+            // Swagger
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                s.SwaggerDoc("v1", new Info
                 {
                     Title = "DFS API",
-                    Description = "分布式文件系统API"
+                    Description = "力众华援（开发部）-分布式文件系统API"
                 });
+                s.OperationFilter<SwaggerFileUploadFilter>();
+                s.DocInclusionPredicate((docName, description) => true);
+
+                // api界面新增authorize按钮，在弹出文本中输入 Bearer +token即可
+                s.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "Authorization format : Bearer {toekn}",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+
+            });
+
+            // 文件上传大小限制
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue;
             });
         }
 
@@ -95,8 +118,13 @@ namespace DFS
             app.UseHttpsRedirection();
             app.UseMvc();
 
+            // Swagger
             app.UseSwagger();
-            app.UseSwaggerUI(s => { s.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs"); });
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
+                //s.InjectJavascript("")
+            });
         }
     }
 }

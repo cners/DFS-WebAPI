@@ -2,29 +2,36 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using DFS.API.Configurations;
 using DFS.Domain.Supervisor;
 using DFS.Domain.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace DFS.API.Controllers
 {
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class FileController : ControllerBase
     {
         private readonly IDfsSupervisor _dfsSupervisor;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IOptions<AppSettings> _settings;
 
         public FileController(IDfsSupervisor dfsSupervisor,
-            IHostingEnvironment hostingEnvironment)
+            IHostingEnvironment hostingEnvironment,
+            IOptions<AppSettings> settings)
         {
             _dfsSupervisor = dfsSupervisor;
             _hostingEnvironment = hostingEnvironment;
+            _settings = settings;
         }
 
         [HttpPost]
@@ -59,30 +66,52 @@ namespace DFS.API.Controllers
             }
         }
 
+
+        /// <summary>
+        /// 单文件上传
+        /// </summary>
+        /// <param name="file">文件</param>
+        /// <param name="ct"></param>
+        /// <returns></returns>
         [HttpPost]
-        [MapToApiVersion("1.1")]
-        //[Produces(typeof(DfsFileUploadViewModel))]
-        public async Task<IActionResult> Upload( CancellationToken ct = default)
+        //[MapToApiVersion("1.1")]
+        [Produces(typeof(DfsFileDownloadViewModel))]
+        [MapToApiVersion("1.0")]
+        [Route("Upload")]
+        //[RequestSizeLimit(10_000_000)] // 最大100M左右
+        //[DisableRequestSizeLimit]     //取消最大文件限制
+        public async Task<IActionResult> Post(IFormFile file, CancellationToken ct = default)
         {
             try
             {
-                var files = Request.Form.Files;
+                if (file == null)
+                    return BadRequest();
+                //files = Request.Form.Files;
                 //long size = files.Sum(f => f.Length);
-                //string webRootPath = _hostingEnvironment.WebRootPath;
-                //string contentRootPath = _hostingEnvironment.ContentRootPath;
-                foreach (var item in files)
-                {
-                    var input = new DfsFileUploadViewModel();
-                    long fileSize = item.Length;
-                    byte[] buffer = new byte[1024 * 100];
-                    var stream = new MemoryStream(buffer);
-                    await item.CopyToAsync(stream, ct);
-                    input.Buffer = buffer;
-                    return new ObjectResult(await _dfsSupervisor.Upload(input, ct));
-                }
 
+                var upload = new DfsFileUploadViewModel();
+                long fileSize = file.Length;
 
-                return BadRequest();
+                // 文件上传大小限制（非服务器的文件大小限制）
+                long kb = 1024;
+                long M = kb * 1024;
+                long G = M * 1024;
+                if (fileSize <= 0)
+                    return BadRequest("该文件已损坏，不支持上传");
+                else if (fileSize > 10 * M)
+                    return BadRequest("超出文件最大限制");
+
+                upload.Buffer = new byte[fileSize];
+                var stream = file.OpenReadStream();
+                await stream.ReadAsync(upload.Buffer, 0, upload.Buffer.Length);
+
+                upload.Suffix = Path.GetExtension(file.FileName).TrimStart('.');
+                upload.Suffix = (upload.Suffix.Length == 0) ? "unknown" : upload.Suffix;
+                upload.FileSize = fileSize;
+                upload.UploadServers = _settings.Value.FastDFS.GetUploadServers();
+                upload.DownloadServer = _settings.Value.FastDFS.DownloadServer ?? "http://192.168.230.144/group1/";
+
+                return new ObjectResult(await _dfsSupervisor.Upload(upload, ct));
             }
             catch (Exception ex)
             {

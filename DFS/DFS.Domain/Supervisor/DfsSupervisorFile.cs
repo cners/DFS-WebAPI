@@ -43,27 +43,44 @@ namespace DFS.Domain.Supervisor
             return files;
         }
 
-        public async Task<string> Upload(DfsFileUploadViewModel uploadViewModel,
+        /// <summary>
+        /// 上传一个文件
+        /// </summary>
+        /// <param name="uploadViewModel"></param>
+        /// <param name="ct"></param>
+        /// <returns></returns>
+        public async Task<DfsFileDownloadViewModel> Upload(DfsFileUploadViewModel uploadViewModel,
             CancellationToken ct = default)
         {
-            ConnectionManager.Initialize(new List<System.Net.IPEndPoint>()
-            {
-                new System.Net.IPEndPoint(IPAddress.Parse("192.168.230.132"),2122)
-            });
+            // 初始化
+            ConnectionManager.Initialize(uploadViewModel.UploadServers);
 
+            // 获取存储服务器节点
             var storageNode = FastDFSClient.GetStorageNodeAsync("group1").Result;
-            Console.WriteLine($"storage node : \r\n{storageNode.GroupName}\r\n{storageNode.EndPoint}\r\n\r\n");
+            Console.WriteLine($"storage node : {storageNode.GroupName},{storageNode.EndPoint}");
 
-            //var buffer = File.ReadAllBytes(uploadViewModel.FilePath);
-           
-            Console.WriteLine("uploading...");
-            string FilePath = FastDFSClient.UploadFileAsync(storageNode, uploadViewModel.Buffer, "jpg").Result;
+            // 执行上传
+            Console.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:uploading...");
+            string filePath = FastDFSClient.UploadFileAsync(storageNode, uploadViewModel.Buffer, uploadViewModel.Suffix).Result;
+            Console.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:Upload Success !");
 
-            Console.WriteLine($"\r\nUpload Success !");
+            Console.WriteLine($"Visit : {filePath}");
 
-            Console.WriteLine($"Visit : {uploadViewModel.FilePath}");
+            // 上传完成，返回结果
+            var downloadViewModel = new DfsFileDownloadViewModel
+            {
+                DownloadServer = uploadViewModel.DownloadServer,
+                FilePath = filePath,
+                Suffix = uploadViewModel.Suffix,
+                FileSize = uploadViewModel.FileSize,
+                Download = uploadViewModel.DownloadServer + filePath,
+                TimeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff"),
+                FileUnits = "bytes",
+                Guid = Guid.NewGuid().ToString("N"),
+                Expir = "0"
+            };
 
-            return FilePath;
+            return downloadViewModel;
         }
     }
 }

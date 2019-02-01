@@ -6,9 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="FastDFS">
-      <HintPath>..\..\..\..\..\..\..\02、程序测试\FastDFS_Test\FastDFS_Test\bin\Debug\netcoreapp2.1\FastDFS.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\FastDFS\FastDFS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="System.ComponentModel.Annotations">
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.2.0\ref\netcoreapp2.2\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>

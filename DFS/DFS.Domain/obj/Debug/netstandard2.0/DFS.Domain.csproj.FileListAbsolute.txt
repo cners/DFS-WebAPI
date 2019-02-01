@@ -1,3 +1,4 @@
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Debug\netstandard2.0\DFS.Domain.csprojAssemblyReference.cache
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Debug\netstandard2.0\DFS.Domain.csproj.CoreCompileInputs.cache
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Debug\netstandard2.0\DFS.Domain.AssemblyInfoInputs.cache
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.Domain\obj\Debug\netstandard2.0\DFS.Domain.AssemblyInfo.cs

@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.JsonPatch.Operations;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace DFS.API.Controllers
 {
