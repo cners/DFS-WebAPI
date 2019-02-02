@@ -13329,6 +13329,7 @@
       "DFS.DataEFCoreMySQL >= 1.0.0",
       "DFS.Domain >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
+      "Microsoft.AspNetCore.Authentication.OAuth >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Versioning >= 3.1.2",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
@@ -13392,6 +13393,10 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.Authentication.OAuth": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Mvc.Versioning": {
             "target": "Package",

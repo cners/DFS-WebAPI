@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DFS.Domain.Supervisor;
+using DFS.Domain.ViewModels;
+using DFS.Domain.ViewModels.Developer;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
-using DFS.Domain.Supervisor;
-using DFS.Domain.ViewModels;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DFS.API.Controllers
 {
@@ -47,9 +47,41 @@ namespace DFS.API.Controllers
             {
                 return new ObjectResult(await _dfsSupervisor.GetAllDeveloperAsync(ct));
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex);
+            }
+        }
+
+        [HttpPost]
+        [Route("Auth")]
+        public async Task<IActionResult> Post([FromBody]DeveloperAuthViewModel input,
+            CancellationToken ct = default)
+        {
+            try
+            {
+                if (input == null)
+                    return BadRequest();
+                var user = new
+                {
+                    AppID = "appid",
+                    SecretKey = "secretkey"
+                };
+                if (input.AppID == user.AppID && input.SecretKey == user.SecretKey)
+                {
+                    var identity =new ClaimsIdentity();
+
+                }
+                else
+                {
+                    return StatusCode(401, "登录失败，用户授权失败");
+                }
+
+                return StatusCode(201, "");
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
             }
         }
     }
