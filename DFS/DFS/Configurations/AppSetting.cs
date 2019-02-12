@@ -13,6 +13,7 @@ namespace DFS.API.Configurations
         /// </summary>
         public AppSettingsFastDFS FastDFS { get; set; }
 
+        public AppSettingsRedisConfig Redis { get; set; }
     }
 
     public class AppSettingsFastDFS
@@ -66,5 +67,20 @@ namespace DFS.API.Configurations
             return tackers;
         }
 
+    }
+
+    public class AppSettingsRedisConfig
+    {
+
+        public AppSettingsRedis Master { get; set; }
+    }
+
+    public class AppSettingsRedis
+    {
+        public string Connection { get; set; }
+
+        public string Password { get; set; }
+
+        public string InstanceName { get; set; }
     }
 }

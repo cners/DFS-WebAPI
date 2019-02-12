@@ -1,0 +1,9 @@
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\bin\Debug\netstandard2.0\DFS.CacheRedis.deps.json
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\bin\Debug\netstandard2.0\DFS.CacheRedis.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\obj\Debug\netstandard2.0\DFS.CacheRedis.csproj.CoreCompileInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\obj\Debug\netstandard2.0\DFS.CacheRedis.AssemblyInfoInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\obj\Debug\netstandard2.0\DFS.CacheRedis.AssemblyInfo.cs
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\bin\Debug\netstandard2.0\DFS.CacheRedis.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\obj\Debug\netstandard2.0\DFS.CacheRedis.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\obj\Debug\netstandard2.0\DFS.CacheRedis.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS.CacheRedis\obj\Debug\netstandard2.0\DFS.CacheRedis.csprojAssemblyReference.cache

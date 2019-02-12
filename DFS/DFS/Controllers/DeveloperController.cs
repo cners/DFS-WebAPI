@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 
 namespace DFS.API.Controllers
 {
+
+    /// <summary>
+    /// 开发者控制器
+    /// </summary>
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class DeveloperController : ControllerBase

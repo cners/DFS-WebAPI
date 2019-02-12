@@ -1,5 +1,6 @@
 ﻿using DFS.API.Configurations;
 using DFS.API.Controllers;
+using DFS.API.Filters;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,30 +10,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using System;
+using System.IO;
+using System.Linq;
+
 namespace DFS
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(c => c.Conventions.Add(new ApiExplorerGroupPerVersionConvention())).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddMemoryCache();
 
             services.AddResponseCaching();
 
-            services.AddMvc();
+            services.AddMvcCore().AddApiExplorer();
 
             // 如果将 API 版本控制添加到现有的API项目中，则可以告知 ASP.NET Core 将默认的控制器和Action视为版本1.0
             // 像这样 http://localhost:5000/api/values 调用API ，不会导致任何错误
@@ -60,19 +67,52 @@ namespace DFS
                 .AddConnectionProvider(Configuration)
                 .AddAppSettings(Configuration);
 
-            // Swagger
-            services.AddSwaggerGen(s =>
+            #region 版本控制
+            services.AddApiVersioning(options =>
             {
-                s.SwaggerDoc("v1", new Info
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+            #endregion
+
+            // Swagger
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1.0", new Info
                 {
-                    Title = "DFS API",
-                    Description = "力众华援（开发部）-分布式文件系统API"
+                    Title = "DFS 接口文档",
+                    Description = "力众华援（开发部）-分布式文件系统API",
+                    Version = "v1.0",
+                    Contact = new Contact
+                    {
+                        Name = "Liu Zhuang",
+                        Email = "liu.zhuang@lzassist.com"
+                    }
                 });
-                s.OperationFilter<SwaggerFileUploadFilter>();
-                s.DocInclusionPredicate((docName, description) => true);
+
+                options.SwaggerDoc("v2.0", new Info { Title = "DFS API -v2", Version = "V2" });
+
+                options.OperationFilter<RemoveVersionFromParameter>();
+                options.DocumentFilter<ReplaceVersionWithExactValueInPath>();
+                options.OperationFilter<SwaggerFileUploadFilter>();
+                //options.DocInclusionPredicate((docName, description) => true);
+                options.DocInclusionPredicate((version, desc) =>
+                {
+                    var versions = desc.ControllerAttributes()
+                                    .OfType<ApiVersionAttribute>()
+                                    .SelectMany(attr => attr.Versions);
+
+                    var maps = desc.ActionAttributes()
+                                .OfType<MapToApiVersionAttribute>()
+                                .SelectMany(attr => attr.Versions)
+                                .ToArray();
+
+                    return versions.Any(v => $"v{v.ToString()}" == version) && (maps.Length == 0 || maps.Any(v => $"v{v.ToString()}" == version));
+                });
+                options.OperationFilter<AddHeaderParameter>();
 
                 // api界面新增authorize按钮，在弹出文本中输入 Bearer +token即可
-                s.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                options.AddSecurityDefinition("Bearer", new ApiKeyScheme
                 {
                     Description = "Authorization format : Bearer {toekn}",
                     Name = "Authorization",
@@ -80,6 +120,16 @@ namespace DFS
                     Type = "apiKey"
                 });
 
+
+                options.IgnoreObsoleteActions();
+            });
+
+            services.ConfigureSwaggerGen(c =>
+            {
+                // 配置生成的 xml 注释文档路径
+                var rootPath = AppContext.BaseDirectory;
+                c.IncludeXmlComments(Path.Combine(rootPath, "DFS.API.Doc.xml"));
+                c.IncludeXmlComments(Path.Combine(rootPath, "DFS.Domain.xml"));
             });
 
             // 文件上传大小限制
@@ -98,37 +148,23 @@ namespace DFS
                     o.AccessDeniedPath = new PathString("/Error/Forbidden");
                 });
 
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    // Password settings.
-            //    options.Password.RequireDigit = true;
-            //    options.Password.RequireLowercase = true;
-            //    options.Password.RequireNonAlphanumeric = true;
-            //    options.Password.RequireUppercase = true;
-            //    options.Password.RequiredLength = 6;
-            //    options.Password.RequiredUniqueChars = 1;
+            #region 跨域访问
+            services.AddCors(options =>
+            {
+                options.AddPolicy("any", builder =>
+                {
+                    builder.AllowAnyOrigin()        //允许任何来源的主机访问
+                                                    //builder.WithOrigins("http://localhost:8080")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();             // 指定处理cookie
+                });
+            });
+            #endregion
 
-            //    // Lockout settings.
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            //    options.Lockout.MaxFailedAccessAttempts = 5;
-            //    options.Lockout.AllowedForNewUsers = true;
-
-            //    // User settings.
-            //    options.User.AllowedUserNameCharacters =
-            //    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            //    options.User.RequireUniqueEmail = false;
-            //});
-
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    // Cookie settings.
-            //    options.Cookie.HttpOnly = true;
-            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
-            //    options.LoginPath = "/Developer/Auth";
-            //    options.AccessDeniedPath = "/Developer/AccessDenied";
-            //    options.SlidingExpiration = true;
-            //});
+            #region 添加Redis缓存
+            services.AddRedisConfiguration(Configuration);
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -143,7 +179,7 @@ namespace DFS
                 app.UseHsts();
             }
 
-           
+
 
             // 使用API版本控制 | 需添加 Microsoft.AspnetCore.mvc.versioning (NuGet) 
             app.UseApiVersioning();
@@ -152,19 +188,40 @@ namespace DFS
 
             app.UseCors("AllowAll");
 
-           
+
 
             // Swagger
             app.UseSwagger();
-            app.UseSwaggerUI(s =>
+            app.UseSwaggerUI(c =>
             {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
-                //s.InjectJavascript("")
+                c.DocumentTitle = "分布式文件系统web接口";
+
+                c.SwaggerEndpoint($"/swagger/v1.0/swagger.json", "V1.0 Docs");
+                c.SwaggerEndpoint($"/swagger/v2.0/swagger.json", "V2.0 Docs");
+
+                //c.DefaultModelExpandDepth(4);
+                c.DefaultModelRendering(ModelRendering.Model);
+                //c.DefaultModelsExpandDepth(-1);                   // 隐藏展示前端实体
+                //c.DisplayOperationId();
+                c.DisplayRequestDuration();
+                c.DocExpansion(DocExpansion.None);
+                c.EnableDeepLinking();
+                c.EnableFilter();
+                c.MaxDisplayedTags(5);
+                c.ShowExtensions();
+                c.EnableValidator();
+                c.SupportedSubmitMethods(SubmitMethod.Get, 
+                                        SubmitMethod.Head,
+                                        SubmitMethod.Post,
+                                        SubmitMethod.Patch,
+                                        SubmitMethod.Delete,
+                                        SubmitMethod.Put);
             });
 
             app.UseAuthentication();
 
-             app.UseHttpsRedirection();
+
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

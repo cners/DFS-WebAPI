@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DFS.API</name>
+    </assembly>
+    <members>
+        <member name="P:DFS.API.Configurations.AppSettings.FastDFS">
+            <summary>
+            FastDFS 配置文件
+            </summary>
+        </member>
+        <member name="P:DFS.API.Configurations.AppSettingsFastDFS.DownloadServer">
+            <summary>
+            下载服务器地址
+            </summary>
+        </member>
+        <member name="P:DFS.API.Configurations.AppSettingsFastDFS.UploadServers">
+            <summary>
+            上传服务器
+            地址:端口
+            </summary>
+        </member>
+        <member name="M:DFS.API.Configurations.AppSettingsFastDFS.GetUploadServers">
+            <summary>
+            获取上传服务器地址组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DFS.API.Configurations.RedisConfiguration">
+            <summary>
+            Redis 缓存配置
+            </summary>
+        </member>
+        <member name="T:DFS.API.Controllers.DeveloperController">
+            <summary>
+            开发者控制器
+            </summary>
+        </member>
+        <member name="T:DFS.API.Controllers.FileController">
+            <summary>
+            文件控制器
+            </summary>
+        </member>
+        <member name="M:DFS.API.Controllers.FileController.Post(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            单文件上传
+            </summary>
+            <param name="file">文件</param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DFS.Domain</name>
+    </assembly>
+    <members>
+        <member name="M:DFS.Domain.Supervisor.DfsSupervisor.Upload(DFS.Domain.ViewModels.DfsFileUploadViewModel,System.Threading.CancellationToken)">
+            <summary>
+            上传一个文件
+            </summary>
+            <param name="uploadViewModel"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.Download">
+            <summary>
+            文件下载地址
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.FileSize">
+            <summary>
+            文件大小（字节）
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.FilePath">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.DownloadServer">
+            <summary>
+            下载服务器地址
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.Suffix">
+            <summary>
+            文件后缀
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.TimeStamp">
+            <summary>
+            上传完成时间戳
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.FileUnits">
+            <summary>
+            文件单位
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.Guid">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileDownloadViewModel.Expir">
+            <summary>
+            过期时间
+            （单位：分钟）
+            默认：0不过期
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileUploadViewModel.Buffer">
+            <summary>
+            文件字节
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileUploadViewModel.Suffix">
+            <summary>
+            后缀
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileUploadViewModel.FileSize">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileUploadViewModel.UploadServers">
+            <summary>
+            上传服务器IP（Tracker）
+             new System.Net.IPEndPoint(IPAddress.Parse("192.168.230.144"),22122),
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileUploadViewModel.DownloadServer">
+            <summary>
+            下载服务器（Nginx）
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.PathID">
+            <summary>
+            路径主键
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.StorageIP">
+            <summary>
+            存储服务器地址
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.VisitIP">
+            <summary>
+            访问服务器地址
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.Path">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.Suffix">
+            <summary>
+            文件后缀
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.Filename">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.FileType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.UploadTime">
+            <summary>
+            上传时间
+            </summary>
+        </member>
+        <member name="P:DFS.Domain.ViewModels.DfsFileViewModel.DevID">
+            <summary>
+            开发主键
+            </summary>
+        </member>
+    </members>
+</doc>

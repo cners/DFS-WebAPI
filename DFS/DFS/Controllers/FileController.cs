@@ -15,6 +15,9 @@ using Microsoft.Extensions.Options;
 
 namespace DFS.API.Controllers
 {
+    /// <summary>
+    /// 文件控制器
+    /// </summary>
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     //[Route("api/[controller]")]
@@ -35,6 +38,7 @@ namespace DFS.API.Controllers
         }
 
         [HttpPost]
+        [ApiExplorerSettings(GroupName ="v2")]
         [Produces(typeof(DfsFileViewModel))]
         public async Task<IActionResult> Post([FromBody] DfsFileViewModel input,
             CancellationToken ct = default)
