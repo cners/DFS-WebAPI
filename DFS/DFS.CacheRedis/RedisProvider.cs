@@ -8,7 +8,7 @@ using System.Text;
 namespace DFS.CacheRedis
 {
     /// <summary>
-    /// Redis服务器提供类
+    /// Redis服务提供类
     /// </summary>
     public class RedisProvider : ICacheService
     {
@@ -32,11 +32,22 @@ namespace DFS.CacheRedis
         /// </summary>
         private static BlockQueue<ConnectionMultiplexer> RedisPool;
 
+        /// <summary>
+        /// 是否启用Redis
+        /// </summary>
+        public static bool _startup = false;
+
 
         #region redis操作封装
 
+        /// <summary>
+        /// 读取一个值
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
         public string Get(string key)
         {
+            if (!_startup) return null;
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -59,8 +70,16 @@ namespace DFS.CacheRedis
             }
         }
 
+        /// <summary>
+        /// 读取一个指定类型的值
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="key">键</param>
+        /// <returns>缓存该类型的值</returns>
         public T Get<T>(string key)
         {
+            if (!_startup) return default(T);
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -90,8 +109,10 @@ namespace DFS.CacheRedis
             var json = JsonConvert.SerializeObject(data);
             return Encoding.UTF8.GetBytes(json);
         }
+
+
         /// <summary>
-        /// 
+        /// 反序列化
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
@@ -102,8 +123,12 @@ namespace DFS.CacheRedis
             var json = Encoding.UTF8.GetString(serializedObject);
             return JsonConvert.DeserializeObject<T>(json);
         }
+
+
         public bool KeyExpire(string key, int timeOut)
         {
+            if (!_startup) return false;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -126,8 +151,15 @@ namespace DFS.CacheRedis
             }
         }
 
+        /// <summary>
+        /// 键是否存在
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
         public bool HasKey(string key)
         {
+            if (!_startup) return false;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -150,8 +182,15 @@ namespace DFS.CacheRedis
             }
         }
 
+        /// <summary>
+        /// 移除键
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
         public bool RemoveKey(string key)
         {
+            if (!_startup) return false;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -174,8 +213,17 @@ namespace DFS.CacheRedis
             }
         }
 
+        /// <summary>
+        /// 设置一个键值
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="timeOut">超时时间，单位：秒</param>
+        /// <returns></returns>
         public bool Set(string key, string value, int timeOut)
         {
+            if (!_startup) return false;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -198,8 +246,18 @@ namespace DFS.CacheRedis
             }
         }
 
+        /// <summary>
+        /// 设置一个键值
+        /// </summary>
+        /// <typeparam name="T">存入的类型</typeparam>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="timeOut">超时时间：单位：秒</param>
+        /// <returns></returns>
         public bool Set<T>(string key, T value, int timeOut)
         {
+            if (!_startup) return false;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -225,6 +283,8 @@ namespace DFS.CacheRedis
 
         public long StringIncrement(string key)
         {
+            if (!_startup) return -1;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -249,6 +309,8 @@ namespace DFS.CacheRedis
 
         public long StringDecrement(string key)
         {
+            if (!_startup) return -1;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -273,6 +335,8 @@ namespace DFS.CacheRedis
 
         public bool HashSet(string key, Dictionary<string, string> values)
         {
+            if (!_startup) return false;
+
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -303,6 +367,7 @@ namespace DFS.CacheRedis
 
         public string HashGet(string key, string filed)
         {
+            if (!_startup) return null;
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -328,6 +393,7 @@ namespace DFS.CacheRedis
 
         public Dictionary<string, string> HashGet(string key)
         {
+            if (!_startup) return null;
             var redis = RedisPool.DeQueue(_queueWait);
             try
             {
@@ -350,6 +416,10 @@ namespace DFS.CacheRedis
             }
         }
 
+        /// <summary>
+        /// 切换数据库
+        /// </summary>
+        /// <param name="index">Redis数据库索引</param>
         public void SetDbIndex(int index)
         {
             _dbIndex = index;
@@ -357,8 +427,9 @@ namespace DFS.CacheRedis
 
         #endregion
 
-        public RedisProvider(string redisIP, string password)
+        public RedisProvider(bool startup, string redisIP, string password)
         {
+            _startup = startup;
             if (redisIP == null || password == null)
                 throw new RedisException("初始化Redis连接失败");
             StartUp(redisIP, password);
@@ -369,6 +440,7 @@ namespace DFS.CacheRedis
         /// </summary>
         public void StartUp(string redisIP, string password)
         {
+            if (!_startup) return;
             ConfigurationOptions config = new ConfigurationOptions()
             {
                 AbortOnConnectFail = false,

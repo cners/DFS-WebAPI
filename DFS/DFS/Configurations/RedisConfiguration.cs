@@ -17,7 +17,7 @@ namespace DFS.API.Configurations
         {
             var redis = new
             {
-                Start = bool.Parse(configuration["AppSettings:Redis:Start"] ?? "false"),
+                Start = bool.Parse(configuration["AppSettings:Redis:Start"] ?? "False"),
                 Master = new
                 {
                     IP = configuration["AppSettings:Redis:Master:Connection"],
@@ -25,7 +25,10 @@ namespace DFS.API.Configurations
                 }
             };
 
-            services.AddSingleton<DFS.CacheRedis.ICacheService>(new DFS.CacheRedis.RedisProvider(redis.Master.IP, redis.Master.Password));
+            services.AddSingleton<DFS.CacheRedis.ICacheService>(
+                new DFS.CacheRedis.RedisProvider(redis.Start,
+                                                redis.Master.IP,
+                                                redis.Master.Password));
 
             return services;
         }
