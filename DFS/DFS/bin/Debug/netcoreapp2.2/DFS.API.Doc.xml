@@ -49,5 +49,12 @@
             <param name="ct"></param>
             <returns></returns>
         </member>
+        <member name="M:DFS.API.Controllers.FileController.UploadAppendTest(System.Threading.CancellationToken)">
+            <summary>
+            断点续传，测试专用，看到横杠说明没问题。
+            </summary>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

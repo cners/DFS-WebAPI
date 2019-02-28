@@ -1,0 +1,7 @@
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Release\netcoreapp2.1\FastDFS.deps.json
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Release\netcoreapp2.1\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Release\netcoreapp2.1\FastDFS.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Release\netcoreapp2.1\FastDFS.csprojAssemblyReference.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Release\netcoreapp2.1\FastDFS.csproj.CoreCompileInputs.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Release\netcoreapp2.1\FastDFS.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\obj\Release\netcoreapp2.1\FastDFS.pdb

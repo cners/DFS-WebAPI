@@ -19,9 +19,6 @@ namespace DFS
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>().UseKestrel(option =>
-                {
-                    option.Limits.MaxRequestBodySize = null;
-                });
+                .UseStartup<Startup>().UseKestrel();
     }
 }

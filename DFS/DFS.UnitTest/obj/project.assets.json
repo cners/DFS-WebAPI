@@ -1179,6 +1179,15 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Memory/4.5.2": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
       "System.ObjectModel/4.0.12": {
         "type": "package",
         "dependencies": {
@@ -1899,7 +1908,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "FastDFSNetCore": "1.1.5"
+          "FastDFSNetCore": "1.1.8"
         },
         "compile": {
           "bin/placeholder/DFS.Domain.dll": {}
@@ -1908,9 +1917,12 @@
           "bin/placeholder/DFS.Domain.dll": {}
         }
       },
-      "FastDFSNetCore/1.1.5": {
+      "FastDFSNetCore/1.1.8": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "System.Memory": "4.5.2"
+        },
         "compile": {
           "bin/placeholder/FastDFSNetCore.dll": {}
         },
@@ -4488,6 +4500,27 @@
         "system.linq.expressions.nuspec"
       ]
     },
+    "System.Memory/4.5.2": {
+      "sha512": "Ohf9h6em5CjPaAzupGtW/TWMzX6aVfIGPh7bq5KQmfvYJr+DqvOa0cRS9ggFKGIuvKTModCQEacGC/CwE8j7cg==",
+      "type": "package",
+      "path": "system.memory/4.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.2.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.ObjectModel/4.0.12": {
       "sha512": "tAgJM1xt3ytyMoW4qn4wIqgJYm7L7TShRZG4+Q4Qsi2PCcj96pXN7nRywS9KkB3p/xDUjc2HSwP9SROyPYDYKQ==",
       "type": "package",
@@ -6605,7 +6638,7 @@
       "path": "../DFS.Domain/DFS.Domain.csproj",
       "msbuildProject": "../DFS.Domain/DFS.Domain.csproj"
     },
-    "FastDFSNetCore/1.1.5": {
+    "FastDFSNetCore/1.1.8": {
       "type": "project",
       "path": "../FastDFS/FastDFS.csproj",
       "msbuildProject": "../FastDFS/FastDFS.csproj"

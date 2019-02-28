@@ -35,6 +35,13 @@ namespace DFS
         {
             services.AddMvc(c => c.Conventions.Add(new ApiExplorerGroupPerVersionConvention())).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            // 文件上传大小限制
+            services.Configure<FormOptions>(options =>
+            {
+                options.ValueLengthLimit = int.MaxValue;
+                options.MultipartBodyLengthLimit = int.MaxValue;
+            });
+
             services.AddMemoryCache();
 
             services.AddResponseCaching();
@@ -66,6 +73,8 @@ namespace DFS
                 .AddCorsConfiguration()
                 .AddConnectionProvider(Configuration)
                 .AddAppSettings(Configuration);
+
+
 
             #region 版本控制
             services.AddApiVersioning(options =>
@@ -132,12 +141,7 @@ namespace DFS
                 c.IncludeXmlComments(Path.Combine(rootPath, "DFS.Domain.xml"));
             });
 
-            // 文件上传大小限制
-            services.Configure<FormOptions>(x =>
-            {
-                x.ValueLengthLimit = int.MaxValue;
-                x.MultipartBodyLengthLimit = int.MaxValue;
-            });
+            
 
             // 授权验证
 
@@ -162,9 +166,7 @@ namespace DFS
             });
             #endregion
 
-            #region 添加Redis缓存
             services.AddRedisConfiguration(Configuration);
-            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -210,7 +212,7 @@ namespace DFS
                 c.MaxDisplayedTags(5);
                 c.ShowExtensions();
                 c.EnableValidator();
-                c.SupportedSubmitMethods(SubmitMethod.Get, 
+                c.SupportedSubmitMethods(SubmitMethod.Get,
                                         SubmitMethod.Head,
                                         SubmitMethod.Post,
                                         SubmitMethod.Patch,

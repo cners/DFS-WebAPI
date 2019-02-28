@@ -1,28 +1,10 @@
 using System;
-using System.Text;
 
 namespace FastDFS.Client
 {
     internal class QUERY_STORE_WITH_GROUP_ONE : FDFSRequest
 	{
-		private static QUERY_STORE_WITH_GROUP_ONE _instance;
-
-		public static QUERY_STORE_WITH_GROUP_ONE Instance
-		{
-			get
-			{
-				if (QUERY_STORE_WITH_GROUP_ONE._instance == null)
-				{
-					QUERY_STORE_WITH_GROUP_ONE._instance = new QUERY_STORE_WITH_GROUP_ONE();
-				}
-				return QUERY_STORE_WITH_GROUP_ONE._instance;
-			}
-		}
-
-		static QUERY_STORE_WITH_GROUP_ONE()
-		{
-			QUERY_STORE_WITH_GROUP_ONE._instance = null;
-		}
+		public static readonly QUERY_STORE_WITH_GROUP_ONE Instance = new QUERY_STORE_WITH_GROUP_ONE();
 
 		private QUERY_STORE_WITH_GROUP_ONE()
 		{
@@ -30,46 +12,42 @@ namespace FastDFS.Client
 
 		public override FDFSRequest GetRequest(params object[] paramList)
 		{
-			if ((int)paramList.Length == 0)
+			if (paramList.Length == 0)
 			{
 				throw new FDFSException("GroupName is null");
 			}
 			QUERY_STORE_WITH_GROUP_ONE queryStoreWithGroupOne = new QUERY_STORE_WITH_GROUP_ONE();
-			byte[] num = Util.StringToByte((string)paramList[0]);
-			if ((int)num.Length > 16)
+            var groupName = (string) paramList[0];
+            var groupNameByteCount = Util.StringByteCount(groupName);
+			if (groupNameByteCount > 16)
 			{
 				throw new FDFSException("GroupName is too long");
 			}
-			byte[] numArray = new byte[16];
-			Array.Copy(num, 0, numArray, 0, (int)num.Length);
-			queryStoreWithGroupOne.Body = numArray;
-			queryStoreWithGroupOne.Header = new FDFSHeader((long)16, 104, 0);
+
+            const int length = 16;
+            queryStoreWithGroupOne.SetBodyBuffer(length);
+            Util.StringToByte(groupName, queryStoreWithGroupOne.BodyBuffer, 0, groupNameByteCount);
+            queryStoreWithGroupOne.Header = new FDFSHeader(length, FDFSConstants.TRACKER_PROTO_CMD_SERVICE_QUERY_STORE_WITH_GROUP_ONE, 0);
 			return queryStoreWithGroupOne;
 		}
 
-		public class Response
+		public class Response: IFDFSResponse
 		{
-			public string GroupName;
+			public string GroupName { get; private set; }
 
-			public string IPStr;
+            public string IPStr { get; private set; }
 
-			public int Port;
+            public int Port { get; private set; }
 
-			public byte StorePathIndex;
+            public byte StorePathIndex { get; private set; }
 
-			public Response(byte[] responseByte)
-			{
-				byte[] numArray = new byte[16];
-				Array.Copy(responseByte, numArray, 16);
-				this.GroupName = Util.ByteToString(numArray).TrimEnd(new char[1]);
-				byte[] numArray1 = new byte[15];
-				Array.Copy(responseByte, 16, numArray1, 0, 15);
-				this.IPStr = (new string(FDFSConfig.Charset.GetChars(numArray1))).TrimEnd(new char[1]);
-				byte[] numArray2 = new byte[8];
-				Array.Copy(responseByte, 31, numArray2, 0, 8);
-				this.Port = (int)Util.BufferToLong(numArray2, 0);
-				this.StorePathIndex = responseByte[(int)responseByte.Length - 1];
-			}
-		}
+            public void ParseBuffer(byte[] responseByte, int length)
+            {
+                this.GroupName = Util.ByteToString(responseByte, 0, 16);
+                this.IPStr = Util.ByteToString(responseByte, 16, 15);
+                this.Port = (int)Util.BufferToLong(responseByte, 31);
+                this.StorePathIndex = responseByte[length - 1];
+            }
+        }
 	}
 }

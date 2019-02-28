@@ -21,3 +21,13 @@ D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-We
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.csproj.CopyComplete
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.dll
 D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Release\netcoreapp2.2\DFS.API.Views.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Release\netcoreapp2.2\DFS.API.Views.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Release\netcoreapp2.2\DFS.CacheRedis.dll
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\bin\Release\netcoreapp2.2\DFS.CacheRedis.pdb
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.TagHelpers.input.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.TagHelpers.output.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.RazorCoreGenerate.cache
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\Razor\Views\Home\Upload.g.cshtml.cs
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.RazorTargetAssemblyInfo.cs
+D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\DFS\obj\Release\netcoreapp2.2\DFS.API.Views.pdb

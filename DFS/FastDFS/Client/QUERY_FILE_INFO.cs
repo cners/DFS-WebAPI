@@ -5,24 +5,7 @@ namespace FastDFS.Client
 {
     internal class QUERY_FILE_INFO : FDFSRequest
 	{
-		private static QUERY_FILE_INFO _instance;
-
-		public static QUERY_FILE_INFO Instance
-		{
-			get
-			{
-				if (QUERY_FILE_INFO._instance == null)
-				{
-					QUERY_FILE_INFO._instance = new QUERY_FILE_INFO();
-				}
-				return QUERY_FILE_INFO._instance;
-			}
-		}
-
-		static QUERY_FILE_INFO()
-		{
-			QUERY_FILE_INFO._instance = null;
-		}
+		public static readonly QUERY_FILE_INFO Instance = new QUERY_FILE_INFO();
 
 		private QUERY_FILE_INFO()
 		{
@@ -35,26 +18,42 @@ namespace FastDFS.Client
 				throw new FDFSException("param count is wrong");
 			}
 			IPEndPoint pEndPoint = (IPEndPoint)paramList[0];
-			string str = (string)paramList[1];
-			string str1 = (string)paramList[2];
-			QUERY_FILE_INFO queryFileInfo = new QUERY_FILE_INFO()
-			{
-			    ConnectionType = 1,
+			string groupName = (string)paramList[1];
+			string fileName = (string)paramList[2];
+			QUERY_FILE_INFO queryFileInfo = new QUERY_FILE_INFO
+            {
+			    ConnectionType = FDFSConnectionType.StorageConnection,
 			    EndPoint = pEndPoint
             };
-			if (str.Length > 16)
-			{
-				throw new FDFSException("groupName is too long");
-			}
-			long length = 16 + str1.Length;
-            byte[] numArray = new byte[length];
-			byte[] num = Util.StringToByte(str);
-			byte[] num1 = Util.StringToByte(str1);
-			Array.Copy(num, 0, numArray, 0, (int)num.Length);
-			Array.Copy(num1, 0, numArray, 16, (int)num1.Length);
-			queryFileInfo.Body = numArray;
-			queryFileInfo.Header = new FDFSHeader(length, 22, 0);
+            var groupNameByteCount = Util.StringByteCount(groupName);
+            if (groupNameByteCount > 16)
+            {
+                throw new FDFSException("groupName is too long");
+            }
+            var fileNameByteCount = Util.StringByteCount(fileName);
+            int length = 16 + fileNameByteCount;
+            queryFileInfo.SetBodyBuffer(length);
+            Util.StringToByte(groupName, queryFileInfo.BodyBuffer, 0, groupNameByteCount);
+            Util.StringToByte(fileName, queryFileInfo.BodyBuffer, 16, fileNameByteCount);
+            queryFileInfo.Header = new FDFSHeader(length, FDFSConstants.STORAGE_PROTO_CMD_QUERY_FILE_INFO, 0);
 			return queryFileInfo;
 		}
 	}
+
+    public class FDFSFileInfo : IFDFSResponse
+    {
+        public long FileSize { get; private set; }
+
+        public DateTime CreateTime { get; private set; }
+
+        public long Crc32 { get; private set; }
+
+        public void ParseBuffer(byte[] responseBytes, int length)
+        {
+            this.FileSize = Util.BufferToLong(responseBytes, 0);
+            DateTime dateTime = new DateTime(1970, 1, 1);
+            this.CreateTime = dateTime.AddSeconds(Util.BufferToLong(responseBytes, 8)).ToLocalTime();
+            this.Crc32 = Util.BufferToLong(responseBytes, 16);
+        }
+    }
 }

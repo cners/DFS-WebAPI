@@ -1,28 +1,10 @@
 using System;
-using System.Text;
 
 namespace FastDFS.Client
 {
     internal class QUERY_UPDATE : FDFSRequest
 	{
-		private static QUERY_UPDATE _instance;
-
-		public static QUERY_UPDATE Instance
-		{
-			get
-			{
-				if (QUERY_UPDATE._instance == null)
-				{
-					QUERY_UPDATE._instance = new QUERY_UPDATE();
-				}
-				return QUERY_UPDATE._instance;
-			}
-		}
-
-		static QUERY_UPDATE()
-		{
-			QUERY_UPDATE._instance = null;
-		}
+		public static readonly QUERY_UPDATE Instance = new QUERY_UPDATE();
 
 		private QUERY_UPDATE()
 		{
@@ -30,48 +12,42 @@ namespace FastDFS.Client
 
 		public override FDFSRequest GetRequest(params object[] paramList)
 		{
-			if ((int)paramList.Length != 2)
+			if (paramList.Length != 2)
 			{
 				throw new FDFSException("param count is wrong");
 			}
-			QUERY_UPDATE queryupDate = new QUERY_UPDATE();
-			string str = (string)paramList[0];
-			string str1 = (string)paramList[1];
-			if (str.Length > 16)
-			{
-				throw new FDFSException("GroupName is too long");
-			}
-			byte[] num = Util.StringToByte(str);
-			byte[] numArray = Util.StringToByte(str1);
-			int length = 16 + (int)numArray.Length;
-			byte[] numArray1 = new byte[length];
-			Array.Copy(num, 0, numArray1, 0, (int)num.Length);
-			Array.Copy(numArray, 0, numArray1, 16, (int)numArray.Length);
-			queryupDate.Body = numArray1;
-			queryupDate.Header = new FDFSHeader((long)length, 103, 0);
-			return queryupDate;
+			QUERY_UPDATE queryUpDate = new QUERY_UPDATE();
+			string groupName = (string)paramList[0];
+            string fileName = (string)paramList[1];
+
+            var groupNameByteCount = Util.StringByteCount(groupName);
+            if (groupNameByteCount > 16)
+            {
+                throw new FDFSException("groupName is too long");
+            }
+            var fileNameByteCount = Util.StringByteCount(fileName);
+            int length = 16 + fileNameByteCount;
+            queryUpDate.SetBodyBuffer(length);
+            Util.StringToByte(groupName, queryUpDate.BodyBuffer, 0, groupNameByteCount);
+            Util.StringToByte(fileName, queryUpDate.BodyBuffer, 16, fileNameByteCount);
+            queryUpDate.Header = new FDFSHeader(length, FDFSConstants.TRACKER_PROTO_CMD_SERVICE_QUERY_UPDATE, 0);
+			return queryUpDate;
 		}
 
-		public class Response
+		public class Response: IFDFSResponse
 		{
-			public string GroupName;
+			public string GroupName { get; set; }
 
-			public string IPStr;
+            public string IPStr { get; set; }
 
-			public int Port;
+			public int Port { get; set; }
 
-			public Response(byte[] responseByte)
-			{
-				byte[] numArray = new byte[16];
-				Array.Copy(responseByte, numArray, 16);
-				this.GroupName = Util.ByteToString(numArray).TrimEnd(new char[1]);
-				byte[] numArray1 = new byte[15];
-				Array.Copy(responseByte, 16, numArray1, 0, 15);
-				this.IPStr = (new string(FDFSConfig.Charset.GetChars(numArray1))).TrimEnd(new char[1]);
-				byte[] numArray2 = new byte[8];
-				Array.Copy(responseByte, 31, numArray2, 0, 8);
-				this.Port = (int)Util.BufferToLong(numArray2, 0);
-			}
-		}
+            public void ParseBuffer(byte[] responseByte, int length)
+            {
+                this.GroupName = Util.ByteToString(responseByte, 0, 16);
+                this.IPStr = Util.ByteToString(responseByte, 16, 15);
+                this.Port = (int)Util.BufferToLong(responseByte, 31);
+            }
+        }
 	}
 }

@@ -24,5 +24,11 @@ namespace DFS.Domain.Supervisor
         Task<DfsFileDownloadViewModel> Upload(DfsFileUploadViewModel uploadViewModel,
            CancellationToken ct = default);
 
+        Task<DfsFileDownloadViewModel> UploadAppenderFileAsync(DfsFileUploadViewModel uploadViewModel,
+         CancellationToken ct = default);
+
+        Task<bool> AppendFileAsync(DfsFileUploadAppendViewModel uploadViewModel,
+         CancellationToken ct = default);
+
     }
 }

@@ -9,7 +9,7 @@ namespace DFS.API.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        [ApiExplorerSettings(IgnoreApi = true)]
+        //[ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Index()
         {
             try
@@ -21,6 +21,11 @@ namespace DFS.API.Controllers
             {
                 return StatusCode(500, ex);
             }
+        }
+
+        public IActionResult Upload()
+        {
+            return View();
         }
     }
 }

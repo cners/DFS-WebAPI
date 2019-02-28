@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FastDFSNetCore</id>
+    <version>1.1.8</version>
+    <authors>caozhiyuan</authors>
+    <owners>caozhiyuan</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/caozhiyuan/FastDFSNetCore</projectUrl>
+    <description>fastdfs async client
+      1.1.8: suppoert appenderfile
+      1.1.7: 1. string zero memory copy 2. errorcode msg
+      1.1.6: use span arraypool reduce gc</description>
+    <tags>fastdfs tcp</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="System.Memory" version="4.5.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="System.Memory" version="4.5.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.5.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Release\net451\FastDFS.dll" target="lib\net451\FastDFS.dll" />
+    <file src="D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Release\netcoreapp2.1\FastDFS.dll" target="lib\netcoreapp2.1\FastDFS.dll" />
+    <file src="D:\01、工作协作\14、内网协同\04.源代码\分布式文件系统\DFS-WebAPI\DFS\FastDFS\bin\Release\netstandard2.0\FastDFS.dll" target="lib\netstandard2.0\FastDFS.dll" />
+  </files>
+</package>
